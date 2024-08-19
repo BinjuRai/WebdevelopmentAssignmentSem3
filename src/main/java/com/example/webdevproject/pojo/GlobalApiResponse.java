@@ -1,17 +1,20 @@
 package com.example.webdevproject.pojo;
 
+
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
 @Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class FeedbackPojo {
-    private String userid;
-    private String userEmailAddress;
-    private String contactNumber;
-    private String feedbackText;
+
+
+public class GlobalApiResponse<T> {
+    private String message;
+    private String status;
+    private T data;
 }

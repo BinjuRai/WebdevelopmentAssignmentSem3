@@ -1,24 +1,21 @@
+
 package com.example.webdevproject.pojo;
 
+import com.example.webdevproject.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 public class BookingPojo {
-    private String userid;
-    private String userEmailAddress;
-    private String password;
-    private String contactNumber;
-    private String age;
-    private String address;
-    private Date scheduleDate;
-    private Date scheduleTime;
-
+    private User client;
+    private User counselor;
+    private LocalDateTime appointmentDate;
+    private String notes;
 }

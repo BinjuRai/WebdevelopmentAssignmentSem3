@@ -1,51 +1,41 @@
 package com.example.webdevproject.Service.Impl;
 
-import com.example.webdevproject.Service.BookingService;
-import com.example.webdevproject.entity.User;
-import com.example.webdevproject.repo.UserRepo;
-import lombok.RequiredArgsConstructor;
+import com.example.webdevproject.entity.Booking;
+import com.example.webdevproject.repository.BookingRepository;
+import com.example.webdevproject.service.BookingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Book;
+import java.util.List;
+import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 public class BookingServiceImpl implements BookingService {
-    private final BookingRepo bookingRepo;
-    private final UserRepo userRepo;
 
-    @Override
-    public Integer saveBook(BookingPojo bookingPojo) {
-        Book book = new Book();
+    private final BookingRepository bookingRepository;
 
-        book.setId(bookingPojo.getId());
-        book.setDate(bookingPojo.getDate());
-
-        User user = user.findById(bookingPojo.getUser_id()).get();
-        book.setUser(user);
-
-        book=bookingRepo.save(book);
-        return book.getId();
+    @Autowired
+    public BookingServiceImpl(BookingRepository bookingRepository) {
+        this.bookingRepository = bookingRepository;
     }
 
     @Override
-    public List<BookingProjection> findAll() {
-        return bookingRepo.findAllData();
+    public List<Booking> findAll() {
+        return bookingRepository.findAll();
     }
 
     @Override
-    public List<Booking> findAll2() {
-        return bookingRepo.findAll();
+    public Optional<Booking> findById(Long id) {
+        return bookingRepository.findById(id);
     }
 
     @Override
-    public Book findById(Integer id) {
-        return bookingRepo.findById(id).get();
+    public Booking save(Booking booking) {
+        return bookingRepository.save(booking);
     }
 
     @Override
-    public void deleteById(Integer id) {
-        bookingRepo.deleteById(id);
-
+    public void deleteById(Long id) {
+        bookingRepository.deleteById(id);
     }
 }

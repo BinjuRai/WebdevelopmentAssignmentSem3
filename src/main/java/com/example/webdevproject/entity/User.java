@@ -8,32 +8,34 @@ import lombok.Setter;
 
 
 
+
 @Entity
+@Table(name = "user")
 @Getter
 @Setter
-@Table(name="user")
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+
 public class User {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "user")
-    @SequenceGenerator(name = "user_seq_gen",sequenceName = "user_seq",allocationSize = 1,initialValue = 100)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(name="username")
+    private String username;
 
-    @Column(name="user_id")
-    private Integer userid;
-
-    @Column(name="name", nullable = false)
-    private String name;
-
-    @Column(name="email", nullable = false)
+    @Column(name="email")
     private String email;
 
     @Column(name="password")
-    private String password;
+    private String password;// Ideally, this should be encrypted
 
-    @Column(name="contactNumber", nullable = false)
-    private String contactNumber;
+    @Column(name="contact")
+    private String contact;
 
+    @Column(name="role")
+    private String role; // e.g., "COUNSELOR" or "CLIENT"
+
+    // Getters and Setters
 }
-
 

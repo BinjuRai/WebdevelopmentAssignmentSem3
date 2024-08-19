@@ -1,17 +1,14 @@
-package com.example.webdevproject.Service;
+package com.example.webdevproject.service;
 
-
-import java.awt.print.Book;
+import com.example.webdevproject.entity.Booking;
+import java.util.List;
+import java.util.Optional;
 
 public interface BookingService {
-    Integer saveBook(BookingPojo bookingPojo);
+    List<Booking> findAll();
+    Optional<Booking> findById(Long id);
+    Booking save(Booking booking);
+    void deleteById(Long id);
 
-
-    List<BookingProjection> findAll();
-    List<Booking> findAll2();
-
-    Book findById(Integer id);
-
-    void deleteById(Integer id);
 
 }
